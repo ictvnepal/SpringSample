@@ -61,7 +61,7 @@ public class ContactModel {
     public int insert(Contact contact){
         String sql="INSERT into contacts(first_name,last_name,email,phone) VALUES(?,?,?,?)";
         Object[] params=new Object[]{contact.getFirstName(),contact.getLastName(),contact.getEmail(),contact.getPhone()};
-        Object[] types=new Object[]{Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR};
+        int[] types=new int[]{Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR};
         return jdbcTemplate.update(sql,params,types);
     }
     
