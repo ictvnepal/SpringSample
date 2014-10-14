@@ -58,12 +58,12 @@ public class ContactController {
     
     @RequestMapping(value="/contact/save",method=RequestMethod.POST)
     public String save(@ModelAttribute("contact") Contact contact,ModelMap map){
-        /*if(contact.getContactId()==0){
-            
+        if(contact.getContactId()>0){
+            contactModel.update(contact);
         }else{
-            
-        }*/
-        contactModel.insert(contact);
+            contactModel.insert(contact);
+        }
+        
         //map.put("contact",contact);
         return "redirect:/contact";
     }

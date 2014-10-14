@@ -65,6 +65,13 @@ public class ContactModel {
         return jdbcTemplate.update(sql,params,types);
     }
     
+    public int update(Contact contact){
+        String sql="UPDATE contacts set first_name=?,last_name=?,email=?,phone=? WHERE contact_id=?";
+        Object[] params=new Object[]{contact.getFirstName(),contact.getLastName(),contact.getEmail(),contact.getPhone(),contact.getContactId()};
+        int[] types=new int[]{Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
+        return jdbcTemplate.update(sql,params,types);
+    }
+    
     public int delete(Integer id){
         String sql="DELETE from contacts where contact_id=?";
         return jdbcTemplate.update(sql,new Object[]{id});
